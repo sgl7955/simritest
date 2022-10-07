@@ -1,20 +1,31 @@
 const main = document.querySelector('#main');
 const qna = document.querySelector('#qna');
+const endPoint = 12; //12개 질문//
 
 function addAnswer(answerText, qIdx){
     var a = document.querySelector('.answerBox');
     var answer = document.createElement('button'); //answer변수에 버튼 만들기//
     answer.classList.add('answerList'); //answerList 클래스 추가//
+    answer.classList.add('my-3');
+    answer.classList.add('py-3');
+    answer.classList.add('mx-auto');
+    answer.classList.add('fadeIn');
+    
     a.appendChild(answer); //answer버튼 a에 소속//
     answer.innerHTML = answerText;
     answer.addEventListener("click", function(){
         var children = document.querySelectorAll('.answerList'); //버튼 모두 선택//
         for(let i = 0; i < children.length; i++){
             children[i].disabled = true;
-            children[i].style.display = 'none'; //버튼 클릭->다른 버튼 사라짐//
-        
+            children[i].style.WebkitAnimation = 'fadeOut 0.5s'; 
+            children[i].style.animation = 'fadeOut 0.5s';        
         }
-        goNext(++qIdx); //반복문 끝난 뒤 다음질문 호출//
+        setTimeout(() => {
+            for(let i = 0; i < children.length; i++){
+                children[i].style.display = 'none';
+            }
+            goNext(++qIdx); //반복문 끝난 뒤 다음질문 호출//
+        },450)
     }, false);
 }
 function goNext(qIdx){
@@ -23,6 +34,8 @@ function goNext(qIdx){
     for(let i in qnaList[qIdx].a){
         addAnswer(qnaList[qIdx].a[i].answer, qIdx);
     }
+    var status = document.querySelector('.statusBar')
+    status.style.width = (100/endPoint) * (qIdx+1) + '%';
 }
 
 function begin(){ //시작하기 버튼 눌렀을 때 qna 페이지로 넘어가는 함수//
