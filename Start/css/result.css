@@ -1,3 +1,27 @@
 #result {
     display: none;
+    background-color: whitesmoke;
+    width: 80%;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.resultname {
+    font-size: 26px;
+}
+.resultDesc{
+    font-size: 20px;
+}
+
+.kakao {
+    color: white;
+    background-color: #FFE500;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 20px;
+}
+
+.kakao:hover, .kakao:focus { /*버튼 올리기, 클릭 효과주기*/
+    background-color: whitesmoke;
+    color: #FFE500;
 }
