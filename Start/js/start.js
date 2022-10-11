@@ -63,6 +63,7 @@ function setResult() {
     const resultDesc = document.querySelector('.resultDesc');
     resultDesc.innerHTML = infoList[point].desc;
 }
+
 function goResult() {
     qna.style.WebkitAnimation = 'fadeOut 1s'; //애니메이션 1초동안 지속//
     qna.style.animation = 'fadeOut 1s';
